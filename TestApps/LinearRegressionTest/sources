@@ -1,0 +1,18 @@
+TARGETNAME=LR_Test
+TARGETPATH=obj
+TARGETTYPE=PROGRAM
+UMTYPE=console
+UMENTRY=main
+
+SOURCES= entry.c 
+
+INCLUDES=$(INCLUDES);..\..\inc
+
+TARGETLIBS = $(TARGETLIBS) \
+             $(SDK_LIB_PATH)\user32.lib \
+             $(OBJ_PATH)\..\..\Library\Matrix\$O\matrix.lib \
+             $(OBJ_PATH)\..\..\Library\LinearRegression\$O\LINEARREGRESSION.lib
+
+
+USE_MSVCRT=1
+
