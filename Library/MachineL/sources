@@ -1,0 +1,13 @@
+
+
+TARGETNAME=MachineL
+TARGETPATH=obj
+TARGETTYPE=LIBRARY
+
+INCLUDES=$(INCLUDES);..\..\inc
+SOURCES= linearregression.c LogicRegression.c MachineL.c
+
+
+
+
+USE_MSVCRT=1
