@@ -1,0 +1,18 @@
+TARGETNAME=MachineLTest
+TARGETPATH=obj
+TARGETTYPE=PROGRAM
+UMTYPE=console
+UMENTRY=main
+
+SOURCES= entry.c 
+
+INCLUDES=$(INCLUDES);..\..\inc
+
+TARGETLIBS = $(TARGETLIBS) \
+             $(SDK_LIB_PATH)\user32.lib \
+             $(OBJ_PATH)\..\..\Library\Matrix\$O\matrix.lib \
+             $(OBJ_PATH)\..\..\Library\MachineL\$O\MachineL.lib
+
+
+USE_MSVCRT=1
+
