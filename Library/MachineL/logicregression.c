@@ -106,10 +106,17 @@ MACHINEL_STATUS LogicRegression_Internal_Training(HMACHINE hMachine, HMATRIX hFe
 *********************************************************/
 MACHINEL_STATUS LogicRegression_Internal_Predict(HMACHINE hMachine, HMATRIX hInputData, double *pPrediction)
 {
-	MACHINEL_STATUS MachineStatus;
+	PMACHINE_L_INTERNAL pMachineLearningInternal = (PMACHINE_L_INTERNAL)hMachine;
+	double Sigmoid;
+	int Matrix_n;
+	double *pInputData;
 
+	Matrix_n = Matrix_GetNumCols(hInputData);
+	pInputData = Matrix_GetDirectIndex(hInputData);
+	
+	*pPrediction = LogicRegression_Internal_Sigmoid(LogicRegression_Internal_ThetaMultiplyX(pMachineLearningInternal, Matrix_n, pInputData));
 
-	return MachineStatus;
+	return MACHINE_L_SUCCESS;
 }
 
 /*********************************************************
@@ -210,9 +217,10 @@ void LogicRegression_Internal_GradientDescent(PMACHINE_L_INTERNAL pMachineLearni
 
 	pTheta = Matrix_GetDirectIndex(pMachineLearningInternal->hTheta);
 	hTempResults = Matrix_CreateIdenticalSize(pMachineLearningInternal->hTheta, 0.0);
-
+	
 	if (hTempResults)
 	{
+		Result = Matrix_GetDirectIndex(hTempResults);
 		for (Index = 0; Index < Matrix_n; Index++)
 		{
 			Result[Index] = 0.0;
