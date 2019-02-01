@@ -32,6 +32,11 @@ HMACHINE MachineLearning_Create(PMACHINE_LEARNING_CREATE pMachineLearningCreate)
 	      case MACHINE_LINEAR_REGRESSION:
 			  hMachine = LinearRegression_Create(pMachineLearningCreate);
 			  break;
+
+		  case MACHINE_LOGIC_REGRESSION:
+			  hMachine = LogicRegression_Create(pMachineLearningCreate);
+			  break;
+
 	}
 
 
